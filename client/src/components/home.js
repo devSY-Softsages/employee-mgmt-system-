@@ -162,7 +162,7 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                  {employeeData.length &&
+                  {!employeeData.length == 0 ? (
                     employeeData.reverse().map((res, index) => (
                       <tr key={index}>
                         <td> {res.name || "-"} </td>
@@ -182,7 +182,10 @@ export default function Home() {
                           </div>
                         </td>
                       </tr>
-                    ))}
+                    ))
+                  ) : (
+                    <div className="text-align-center">No records found</div>
+                  )}
                 </tbody>
               </table>
             </div>
