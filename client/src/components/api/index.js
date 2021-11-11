@@ -4,7 +4,7 @@ const baseURL = "http://localhost:3001/profile";
 
 export const fetchData = async () => {
   try {
-    const { data } = await axios.get(`${baseURL}`); //need to improve (Destructuring assignment data unnecessarily renamed)
+    const { data } = await axios.get(`${baseURL}`);
     return data;
   } catch (error) {
     return error;

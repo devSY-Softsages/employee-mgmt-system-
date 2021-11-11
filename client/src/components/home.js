@@ -41,6 +41,16 @@ export default function Home() {
   };
 
   const submitData = () => {
+    const { name, designation, salary, projects_assigend } = newEmployee;
+    if (
+      validate(name) ||
+      validate(designation) ||
+      validate(salary) ||
+      validate(projects_assigend)
+    ) {
+      alert("Please enter complete fields");
+      return;
+    }
     if (!newEmployee.id) {
       createResource(newEmployee);
       alert("User added successfully");
@@ -50,6 +60,12 @@ export default function Home() {
     }
     fetchEmployeeData();
     setNewEmployee(initialstate);
+  };
+
+  const validate = (str) => {
+    if (str == "") {
+      return true;
+    } else return false;
   };
 
   const deleteEmployee = (userId) => {
