@@ -17,18 +17,20 @@ function Json() {
       <div className="row card-deck">
         {data ? (
           data.map((item, index) => (
-            <div className="col-md-12 col-sm-12 main-card mb-3">
-              <div className="row">
-                <div className="col-md-3">Card Number</div>
-                <div className="col-md-9">{index + 1}</div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">UserID</div>
-                <div className="col-md-9">{item.userId}</div>
-              </div>
-              <div className="row">
-                <div className="col-md-3">ID</div>
-                <div className="col-md-9">{item.id}</div>
+            <div className="col-md-12 col-sm-12 main-card mb-3 pt-0">
+              <div className="row card-row">
+                <div className="col-md-4 d-flex ">
+                  <div className="col-md-6">Card Number</div>
+                  <div className="col-md-6">{index + 1}</div>
+                </div>
+                <div className="col-md-4 d-flex ">
+                  <div className="col-md-6">UserID</div>
+                  <div className="col-md-6">{item.userId}</div>
+                </div>
+                <div className="col-md-4 d-flex ">
+                  <div className="col-md-6">ID</div>
+                  <div className="col-md-6">{item.id}</div>
+                </div>
               </div>
               <div className="row">
                 <div className="col-md-3">Title</div>
