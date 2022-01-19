@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const baseURL = "http://localhost:3001/profile";
+const baseURL = 'http://localhost:3001/profile';
 
 export const fetchData = async () => {
   try {
@@ -38,6 +38,7 @@ export const createResource = async (state) => {
       projects_assigend: state.projects_assigend,
     });
   } catch (error) {
+    console.log('error', error.res);
     return error;
   }
 };
@@ -46,7 +47,7 @@ export const createResource = async (state) => {
 export const getPosts = async () => {
   try {
     const { data } = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
+      'https://jsonplaceholder.typicode.com/posts'
     );
     return data;
   } catch (error) {
