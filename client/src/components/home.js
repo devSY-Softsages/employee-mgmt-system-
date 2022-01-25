@@ -1,21 +1,20 @@
-import { useState, useEffect } from "react";
-import Plus from "../images/plus-icon.svg";
-import Edit from "../images/edit.svg";
-import Delete from "../images/trash.svg";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import Edit from '../images/edit.svg';
+import Delete from '../images/trash.svg';
+import { useNavigate } from 'react-router-dom';
 import {
   fetchData,
   createResource,
   deleteEntry,
   updatingEntry,
-} from "../components/api/index";
+} from '../components/api/index';
 
 const initialstate = {
-  name: "",
-  designation: "",
-  salary: "",
-  projects_assigend: "",
-  id: "",
+  name: '',
+  designation: '',
+  salary: '',
+  projects_assigend: '',
+  id: '',
 };
 
 export default function Home() {
@@ -29,7 +28,7 @@ export default function Home() {
 
   const fetchEmployeeData = async () => {
     const data = await fetchData();
-    console.log("data", data.response);
+    console.log('data', data.response);
     setEmployeeData(data);
   };
 
@@ -48,29 +47,29 @@ export default function Home() {
       validate(salary) ||
       validate(projects_assigend)
     ) {
-      alert("Please enter complete fields");
+      alert('Please enter complete fields');
       return;
     }
     if (!newEmployee.id) {
       createResource(newEmployee);
-      alert("User added successfully");
+      alert('User added successfully');
     } else {
       updatingEntry(newEmployee);
-      alert("User details updated successfully");
+      alert('User details updated successfully');
     }
     fetchEmployeeData();
     setNewEmployee(initialstate);
   };
 
   const validate = (str) => {
-    if (str == "") {
+    if (str === '') {
       return true;
     } else return false;
   };
 
   const deleteEmployee = (userId) => {
     deleteEntry(userId);
-    alert("User successfully deleted");
+    alert('User successfully deleted');
     fetchEmployeeData();
   };
 
@@ -79,10 +78,10 @@ export default function Home() {
   };
 
   const routeChange = () => {
-    navigate("/json");
+    navigate('/json');
   };
 
-  const { name, designation, salary, projects_assigend, id } = newEmployee;
+  const { name, designation, salary, projects_assigend } = newEmployee;
 
   return (
     <div class="row">
@@ -162,22 +161,24 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                  {!employeeData.length == 0 ? (
+                  {!employeeData.length === 0 ? (
                     employeeData.reverse().map((res, index) => (
                       <tr key={index}>
-                        <td> {res.name || "-"} </td>
-                        <td> {res.designation || "-"} </td>
-                        <td> {res.salary || "-"} </td>
-                        <td> {res.projects_assigend || "-"} </td>
+                        <td> {res.name || '-'} </td>
+                        <td> {res.designation || '-'} </td>
+                        <td> {res.salary || '-'} </td>
+                        <td> {res.projects_assigend || '-'} </td>
                         <td>
                           <div className="d-flex">
                             <img
                               src={Delete}
                               onClick={() => deleteEmployee(res.id)}
+                              alt={res.id}
                             ></img>
                             <img
                               src={Edit}
                               onClick={() => editEmployee(res)}
+                              alt={res.id}
                             ></img>
                           </div>
                         </td>
